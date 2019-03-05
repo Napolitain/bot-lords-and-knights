@@ -1,0 +1,57 @@
+{
+  "email":"lordk@mail.com",
+  "password":"your_password",
+  "blacklist_hours":[],
+  "buildings":{
+    "active":true,
+    "caps":[190, 220, 289],
+    "parts":[
+      {
+        "cap":190,
+        "rate_on":120,
+        "dun_rate":0,
+        "lib_rate":0,
+        "tav_rate":0,
+        "army_rate":8,
+        "fort_rate":16,
+        "market_rate":16,
+        "farms_rate":30,
+        "ress_rate":120,
+        "fill":false
+      },
+      {
+        "cap":220,
+        "rate_on":85,
+        "dun_rate":15,
+        "lib_rate":30,
+        "tav_rate":30,
+        "army_rate":45,
+        "fort_rate":60,
+        "market_rate":85,
+        "farms_rate":60,
+        "ress_rate":85,
+        "fill":false
+      },
+      {
+        "cap":289,
+        "fill":true
+      }
+    ]
+  },
+  "troops":{
+    "active":false,
+    "composition":[500, 333, 400, 833, 500, 500, 0, 12],
+    "rate":[0, 2],
+    "starting":200
+  },
+  "coins":{
+    "active":false,
+    "rate":[1, 2],
+    "starting":200
+  },
+  "attacks":{
+    "active":false,
+    "auto":false,
+    "starting":200
+  }
+}
