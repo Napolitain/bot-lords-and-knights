@@ -3,15 +3,13 @@
  */
 
 (async () => {
-   const common = require('./modules/common');
-   const fillLogin = require('./modules/fillLogin');
+    const common = require('./modules/common');
+    const fillLogin = require('./modules/fillLogin');
+    const submitWorlds = require('./modules/submitWorld');
 
-   await common.init();
+    await common.init();
 
-   await fillLogin.precise();
-   if (fillLogin.login !== 'precise') {
-      await fillLogin.try();
-   }
+    await fillLogin.precise();
 
-
+	await submitWorlds.precise();
 })();

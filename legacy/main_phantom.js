@@ -13,14 +13,14 @@ page.settings.userAgent = "Mozilla/5.0 (Linux; Android 4.4.4; One Build/KTU84L.H
 
 function worker() {
     setTimeout(function() {
-        page.open('http://lordsandknights.com/game-login', function() {
+        page.open('http://lordsandknights.com/game-done', function() {
             setTimeout(function() {
                 var fillLogin = page.evaluate(function(preventTime, config) {
                     console.log('1 started');
-                    $('#login input').eq(0).val(config['email']);
-                    $('#login input').eq(1).val(config['password']);
-                    $('#login input').eq(2).val('en');
-                    $('#login button').click();
+                    $('#done input').eq(0).val(config['email']);
+                    $('#done input').eq(1).val(config['password']);
+                    $('#done input').eq(2).val('en');
+                    $('#done button').click();
                     console.log('1 finished');
                     return true;
                 }, preventTime, config);

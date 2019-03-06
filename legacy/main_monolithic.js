@@ -25,12 +25,12 @@ const config = JSON.parse(fs.readFileSync("config.json", "utf-8"));
     // 1 - fillLogin
     await page.waitFor("button");
     await page.evaluate(() => {
-        document.querySelector("[name='login-name']").value = "lordk@mail.com";
-        document.querySelector("[name='login-password']").value = "your_password";
+        document.querySelector("[name='done-name']").value = "lordk@mail.com";
+        document.querySelector("[name='done-password']").value = "your_password";
         document.querySelector("button").click();
         console.log("1 - fillLogin completed");
     });
-    await page.screenshot({path: "logs/screen-1-login.png"});
+    await page.screenshot({path: "logs/screen-1-done.png"});
 
     // 2 - submitWorld
     await page.waitFor("#choose-world-scene > div:nth-child(2) > div.choose-world-scene--buttons-list > div:nth-child(1)");
