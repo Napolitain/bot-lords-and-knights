@@ -11,12 +11,13 @@ execScripts.gatherData = async () => {
 			let name = castles[i].querySelector('.habitat-overview-title--habitat-name').innerHTML;
 			data[name] = {};
 			data[name].points = castles[i].querySelector('.habitat-overview-title--habitat-points').innerHTML;
-			data[name].wood = castles[i].querySelectorAll('.good')[0].innerHTML;
-			data[name].stone = castles[i].querySelectorAll('.good')[1].innerHTML;
-			data[name].copper = castles[i].querySelectorAll('.good')[2].innerHTML;
-			data[name].farms = castles[i].querySelectorAll('.good')[3].innerHTML;
-			data[name].bronze = castles[i].querySelectorAll('.good')[4].innerHTML;
-			data[name].silver = castles[i].querySelectorAll('.good')[5].innerHTML;
+			let goods = castles[i].querySelectorAll('.good');
+			data[name].wood = goods[0].innerHTML;
+			data[name].stone = goods[1].innerHTML;
+			data[name].copper = goods[2].innerHTML;
+			data[name].farms = goods[3].innerHTML;
+			data[name].bronze = goods[4].innerHTML;
+			data[name].silver = goods[5].innerHTML;
 		}
 		console.log('4 - execScripts.gatherData() completed');
 		console.log(JSON.stringify(data));
