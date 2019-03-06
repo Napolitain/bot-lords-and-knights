@@ -1,6 +1,6 @@
 const common = require('./common');
 
-let fillLogin = {};
+let fillLogin = {login: null};
 
 /**
  * Precise way to authenticate the user
@@ -14,6 +14,7 @@ fillLogin.precise = async () => {
         document.querySelector("button").click();
         console.log("1 - fillLogin completed");
     });
+    fillLogin.login = 'precise';
 };
 
 /**
@@ -26,6 +27,7 @@ fillLogin.try = async () => {
         document.querySelector("form input:nth-child(2)").value = common.config['password'];
         document.querySelector('button').click();
     });
+    fillLogin.login = 'try';
 };
 
 module.exports = fillLogin;
