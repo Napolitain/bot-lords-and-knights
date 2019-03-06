@@ -1,4 +1,4 @@
-const common = require('./common')
+const common = require('./common');
 
 let fillLogin = {};
 
@@ -22,7 +22,9 @@ fillLogin.precise = async () => {
  */
 fillLogin.try = async () => {
     await common.page.evaluate(() => {
-        document.querySelector("form input:nth-child(1)").value = common.config.
+        document.querySelector("form input:nth-child(1)").value = common.config['email'];
+        document.querySelector("form input:nth-child(2)").value = common.config['password'];
+        document.querySelector('button').click();
     });
 };
 
