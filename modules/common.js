@@ -22,7 +22,8 @@ common.init = async () => {
         }
     });
 
-    await common.page.goto('https://lordsandknights.com', {waitUntil: 'networkidle2'});
+    // no networkidle2 because the website can be slow (useless with waitFor)
+    await common.page.goto('https://lordsandknights.com');
 };
 
 module.exports = common;

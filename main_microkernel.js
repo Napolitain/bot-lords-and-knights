@@ -6,10 +6,10 @@
     const common = require('./modules/common');
     const fillLogin = require('./modules/fillLogin');
     const submitWorlds = require('./modules/submitWorld');
+    const spawnPanels = require('./modules/spawnPanels');
 
     await common.init();
-
     await fillLogin.precise();
-
 	await submitWorlds.precise();
+	await spawnPanels.precise();
 })();
