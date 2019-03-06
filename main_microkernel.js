@@ -7,9 +7,12 @@
     const fillLogin = require('./modules/fillLogin');
     const submitWorlds = require('./modules/submitWorld');
     const spawnPanels = require('./modules/spawnPanels');
+    const execScripts = require('./modules/execScripts');
 
     await common.init();
     await fillLogin.precise();
 	await submitWorlds.precise();
 	await spawnPanels.precise();
+	await execScripts.gatherData();
+	await execScripts.build();
 })();
