@@ -52,22 +52,44 @@ execScripts.gatherData = async () => {
 };
 
 execScripts.build = async () => {
-	for (const [key, value] of Object.entries(common.castles)) {
-		let algorithm = fn.getConfig(value.points);
-		await common.page.evaluate((fill) => {
-			if (fill) {
-				let castles = document.querySelectorAll('.tabular.table--global-overview.table--global-overview--buildings');
-				for (let castle of castles) {
-					castle.querySelector('button').click();
-				}
+	await common.page.evaluate((json, getAlgorithm) => {
+		let castles = document.querySelectorAll('.tabular.table--global-overview.table--global-overview--buildings');
+		for (let castle of castles) {
+			let name = castle.querySelector('.tabular-habitat-title-cell--habitat-title').innerHTML;
+			let algorithm = getAlgorithm(json[name].points);
+			if (algorithm['fill'] === true) {
+				castle.querySelector('button').click();
 			} else {
+				let buttons = castle.querySelectorAll('button');
 				let r = Math.floor((Math.random() * algorithm['rate_on']) + 1);
 				if (r < algorithm['dun_rate']) {
-
+					buttons[0].click();
+				} else if (r < algorithm['army_rate'] && r >= algorithm['dun_rate']) {
+					buttons[1].click();
+				} else if (r < algorithm['tav_rate'] && r >= algorithm['army_rate']) {
+					buttons[2].click();
+				} else if (r < algorithm['lib_rate'] && r >= algorithm['tav_rate']) {
+					buttons[3].click();
+				} else if (r < algorithm['fort_rate'] && r >= algorithm['lib_rate']) {
+					buttons[4].click();
+				} else if (r < algorithm['market_rate'] && r >= algorithm['fort_rate']) {
+					buttons[5].click();
+				} else if (r < algorithm['farms_rate'] && r >= algorithm['market_rate']) {
+					buttons[6].click();
+				} else if (r < algorithm['ress_rate'] && r >= algorithm['farms_rate']) { //prod and storage
+					var prod = [buildingsList[i].slice(7)[0], buildingsList[i].slice(7)[2], buildingsList[i].slice(7)[4]];
+					var store = [buildingsList[i].slice(7)[1], buildingsList[i].slice(7)[3], buildingsList[i].slice(7)[5]];
+					if (((prod.reduce(add, 0) - store.reduce(add, 0)) < 18) && store.reduce(add, 0) !== 60) {
+						var k = prod.indexOf(Array.min(prod));
+						pathsList[i].children().eq(7+2*k).children().eq(2).click(); // $('div[data-habitat='+pathsList[i]+'].building .button .buildbutton').eq(7+2*k).children().eq(2).click(); //commented is modern version
+					} else {
+						var k = store.indexOf(Array.min(store));
+						pathsList[i].children().eq(8+2*k).children().eq(2).click(); // $('div[data-habitat='+pathsList[i]+'].building .button .buildbutton').eq(8+2*k).children().eq(2).click(); //
+					}
 				}
 			}
-		}, algorithm.fill === true);
-	}
+		}
+	}, common.castles, fn.getAlgorithm);
 };
 
 module.exports = execScripts;

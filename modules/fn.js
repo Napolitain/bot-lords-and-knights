@@ -2,7 +2,7 @@ const common = require('./common');
 
 let fn = {};
 
-fn.getConfig = (points) => {
+fn.getAlgorithm = (points) => {
 	let caps = common.config['buildings']['caps'];
 	let cap = Math.min.apply(null, caps.filter(function(v) {
 		return v >= points;
