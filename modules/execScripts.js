@@ -1,4 +1,5 @@
 const common = require('./common');
+const fn = require('./fn');
 
 let execScripts = {};
 
@@ -26,7 +27,10 @@ execScripts.gatherData = async () => {
 };
 
 execScripts.build = async () => {
-
+	for (const [key, value] of Object.entries(common.castles)) {
+		let config = fn.getConfig(value['points']);
+		console.log(config);
+	}
 };
 
 module.exports = execScripts;
