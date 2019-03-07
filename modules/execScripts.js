@@ -1,10 +1,12 @@
 const common = require('./common');
 const fn = require('./fn');
+const autocorrect = require('./autocorrect');
 
 let execScripts = {};
 
 execScripts.gatherData = async () => {
 	await common.page.waitFor('#menu-section-general-container > div > div.menu--content-section > div.menu-list-element.habitat-overview--widget.clickable');
+	await autocorrect.buttonRedAccept();
 	common.castles = await common.page.evaluate(() => {
 		let data = {};
 		let castles = document.querySelectorAll('#menu-section-general-container > div > div.menu--content-section > div.menu-list-element.habitat-overview--widget.clickable');
