@@ -30,21 +30,21 @@ execScripts.gatherData = async () => {
 		castles = document.querySelectorAll('.tabular.table--global-overview.table--global-overview--buildings');
 		for (let castle of castles) {
 			let name = castle.querySelector('.tabular-habitat-title-cell--habitat-title').innerHTML;
-			data[name]['buildings'] = {};
+			data[name].buildings = {};
 			let buildings = castle.querySelectorAll('.upgrade-building--cell');
-			data[name]['buildings'].keep = buildings[0].querySelector('div').innerHTML;
-			data[name]['buildings'].arsenal = buildings[1].querySelector('div').innerHTML;
-			data[name]['buildings'].tavern = buildings[2].querySelector('div').innerHTML;
-			data[name]['buildings'].library = buildings[3].querySelector('div').innerHTML;
-			data[name]['buildings'].fortification = buildings[4].querySelector('div').innerHTML;
-			data[name]['buildings'].market = buildings[5].querySelector('div').innerHTML;
-			data[name]['buildings'].farm = buildings[6].querySelector('div').innerHTML;
-			data[name]['buildings'].lumberjack = buildings[7].querySelector('div').innerHTML;
-			data[name]['buildings'].woodstore = buildings[8].querySelector('div').innerHTML;
-			data[name]['buildings'].quarry = buildings[9].querySelector('div').innerHTML;
-			data[name]['buildings'].stonestore = buildings[10].querySelector('div').innerHTML;
-			data[name]['buildings'].oremine = buildings[11].querySelector('div').innerHTML;
-			data[name]['buildings'].orestore = buildings[12].querySelector('div').innerHTML;
+			data[name].buildings.keep = buildings[0].querySelector('div').innerHTML;
+			data[name].buildings.arsenal = buildings[1].querySelector('div').innerHTML;
+			data[name].buildings.tavern = buildings[2].querySelector('div').innerHTML;
+			data[name].buildings.library = buildings[3].querySelector('div').innerHTML;
+			data[name].buildings.fortification = buildings[4].querySelector('div').innerHTML;
+			data[name].buildings.market = buildings[5].querySelector('div').innerHTML;
+			data[name].buildings.farm = buildings[6].querySelector('div').innerHTML;
+			data[name].buildings.lumberjack = buildings[7].querySelector('div').innerHTML;
+			data[name].buildings.woodstore = buildings[8].querySelector('div').innerHTML;
+			data[name].buildings.quarry = buildings[9].querySelector('div').innerHTML;
+			data[name].buildings.stonestore = buildings[10].querySelector('div').innerHTML;
+			data[name].buildings.oremine = buildings[11].querySelector('div').innerHTML;
+			data[name].buildings.orestore = buildings[12].querySelector('div').innerHTML;
 		}
 		console.log('4 - execScripts.gatherData() completed');
 		return data;
@@ -53,7 +53,7 @@ execScripts.gatherData = async () => {
 
 execScripts.build = async () => {
 	for (const [key, value] of Object.entries(common.castles)) {
-		let algorithm = fn.getConfig(value['points']);
+		let algorithm = fn.getConfig(value.points);
 		await common.page.evaluate((fill) => {
 			if (fill) {
 				let castles = document.querySelectorAll('.tabular.table--global-overview.table--global-overview--buildings');
@@ -61,7 +61,10 @@ execScripts.build = async () => {
 					castle.querySelector('button').click();
 				}
 			} else {
-				let r = Math.floor((Math.random() * algorithm))
+				let r = Math.floor((Math.random() * algorithm['rate_on']) + 1);
+				if (r < algorithm['dun_rate']) {
+
+				}
 			}
 		}, algorithm.fill === true);
 	}
