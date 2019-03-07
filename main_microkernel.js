@@ -3,6 +3,7 @@
  *
  * TODO: autoML.js
  * TODO: die and retry architecture (if script is done, start the next one, or start one or several times before)
+ * TODO: there are 5 minutes free finish buildings, which could be automated
  */
 
 (async () => {
@@ -11,6 +12,7 @@
     const submitWorlds = require('./modules/submitWorld');
     const spawnPanels = require('./modules/spawnPanels');
     const execScripts = require('./modules/execScripts');
+	const getTimes = require('./modules/getTimes');
 
     const email = process.argv[2];
     const password = process.argv[3];
@@ -21,4 +23,5 @@
 	await spawnPanels.precise();
 	await execScripts.gatherData();
 	await execScripts.build();
+	await getTimes.precise();
 })();
