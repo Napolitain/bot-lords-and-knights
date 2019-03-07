@@ -49,12 +49,21 @@ execScripts.gatherData = async () => {
 		console.log('4 - execScripts.gatherData() completed');
 		return data;
 	});
-	console.log(common.castles);
 };
 
 execScripts.build = async () => {
 	for (const [key, value] of Object.entries(common.castles)) {
-		let config = fn.getConfig(value['points']);
+		let algorithm = fn.getConfig(value['points']);
+		await common.page.evaluate((fill) => {
+			if (fill) {
+				let castles = document.querySelectorAll('.tabular.table--global-overview.table--global-overview--buildings');
+				for (let castle of castles) {
+					castle.querySelector('button').click();
+				}
+			} else {
+				let r = Math.floor((Math.random() * algorithm))
+			}
+		}, algorithm.fill === true);
 	}
 };
 
