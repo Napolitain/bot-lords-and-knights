@@ -52,11 +52,18 @@ execScripts.gatherData = async () => {
 };
 
 execScripts.build = async () => {
-	await common.page.evaluate((json, getAlgorithm) => {
+	let algorithms = {};
+	for (const [key, value] of Object.entries(common.castles)) {
+		algorithms[key] = fn.getAlgorithm(value.points);
+	}
+	await common.page.evaluate((json, algorithms) => {
+		function add(a, b) {
+			return a + b;
+		}
 		let castles = document.querySelectorAll('.tabular.table--global-overview.table--global-overview--buildings');
 		for (let castle of castles) {
 			let name = castle.querySelector('.tabular-habitat-title-cell--habitat-title').innerHTML;
-			let algorithm = getAlgorithm(json[name].points);
+			let algorithm = algorithms[name];
 			if (algorithm['fill'] === true) {
 				castle.querySelector('button').click();
 			} else {
@@ -77,19 +84,19 @@ execScripts.build = async () => {
 				} else if (r < algorithm['farms_rate'] && r >= algorithm['market_rate']) {
 					buttons[6].click();
 				} else if (r < algorithm['ress_rate'] && r >= algorithm['farms_rate']) { //prod and storage
-					var prod = [buildingsList[i].slice(7)[0], buildingsList[i].slice(7)[2], buildingsList[i].slice(7)[4]];
-					var store = [buildingsList[i].slice(7)[1], buildingsList[i].slice(7)[3], buildingsList[i].slice(7)[5]];
+					let prod = [json[name].buildings.lumberjack, json[name].buildings.quarry, json[name].buildings.oremine];
+					let store = [json[name].buildings.woodstore, json[name].buildings.stonestore, json[name].buildings.orestore];
 					if (((prod.reduce(add, 0) - store.reduce(add, 0)) < 18) && store.reduce(add, 0) !== 60) {
-						var k = prod.indexOf(Array.min(prod));
-						pathsList[i].children().eq(7+2*k).children().eq(2).click(); // $('div[data-habitat='+pathsList[i]+'].building .button .buildbutton').eq(7+2*k).children().eq(2).click(); //commented is modern version
+						let k = prod.indexOf(Math.min.apply(Math, prod));
+						buttons[7+2*k].click();
 					} else {
-						var k = store.indexOf(Array.min(store));
-						pathsList[i].children().eq(8+2*k).children().eq(2).click(); // $('div[data-habitat='+pathsList[i]+'].building .button .buildbutton').eq(8+2*k).children().eq(2).click(); //
+						let k = store.indexOf(Math.min.apply(Math, store));
+						buttons[8+2*k].click();
 					}
 				}
 			}
 		}
-	}, common.castles, fn.getAlgorithm);
+	}, common.castles, algorithms);
 };
 
 module.exports = execScripts;
