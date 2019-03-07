@@ -1,6 +1,4 @@
 {
-  "email":"lordk@mail.com",
-  "password":"your_password",
   "blacklist_hours":[],
   "buildings":{
     "active":true,
