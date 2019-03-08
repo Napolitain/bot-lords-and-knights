@@ -7,17 +7,22 @@
  */
 
 (async () => {
-    const common = require('./modules/common');
+    let common = require('./modules/common');
 
-	const login = require('./modules/login');
-    const submitWorlds = require('./modules/submitWorld');
-    const spawnPanels = require('./modules/spawnPanels');
-    const execScripts = require('./modules/execScripts');
-	const getTimes = require('./modules/getTimes');
+	common.login = require('./modules/login');
+    common.submitWorld = require('./modules/submitWorld');
+    common.spawnPanels = require('./modules/spawnPanels');
+    common.execScripts = require('./modules/execScripts');
+	common.getTimes = require('./modules/getTimes');
 
     const email = process.argv[2];
     const password = process.argv[3];
 
 	await common.init();
-	await login.fill(email, password);
+	await common.login.fill(email, password);
+	await common.submitWorld();
+	await common.spawnPanels();
+	await common.execScripts.gatherData();
+	await common.execScripts.build();
+
 })();

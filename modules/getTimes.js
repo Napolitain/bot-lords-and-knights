@@ -1,8 +1,6 @@
 const common = require('./common');
 
-let getTimes = {};
-
-getTimes.precise = async () => {
+common.getTimes = async () => {
 	common.next = await common.page.evaluate(() => {
 		/**
 		 * next in seconds
@@ -29,4 +27,4 @@ getTimes.precise = async () => {
 	});
 };
 
-module.exports = getTimes;
+module.exports = common.getTimes;

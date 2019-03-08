@@ -1,6 +1,6 @@
 const common = require('./common');
 
-let login = {};
+common.login = {};
 
 /**
  * Fill login with application parameters email and password
@@ -8,7 +8,7 @@ let login = {};
  * @param password process.argv[3]
  * @returns {Promise<void>} ignored
  */
-login.fill = async (email, password) => {
+common.login.fill = async (email, password) => {
     await common.page.waitFor("button");
     await common.page.evaluate((email, password) => {
         document.querySelector("[name='login-name']").value = email;
@@ -23,7 +23,7 @@ login.fill = async (email, password) => {
  * Bypass login with direct play button (in case we are not logged out)
  * @returns {Promise<void>} ignored
  */
-login.directPlay = async () => {
+common.login.directPlay = async () => {
     await common.page.reload();
     await common.page.waitFor('button.button.button-direct-play');
     await common.page.evaluate(() => {
@@ -38,4 +38,4 @@ login.directPlay = async () => {
     common.todo = "submitWorlds.precise";
 };
 
-module.exports = login;
+module.exports = common.login;

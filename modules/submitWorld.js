@@ -1,8 +1,6 @@
 const common = require('./common');
 
-let submitWorld = {};
-
-submitWorld.precise = async () => {
+common.submitWorld = async () => {
 	await common.page.waitFor("#choose-world-scene div:nth-child(1)");
 	await common.page.evaluate(() => {
 		// TODO: sometimes, world isn't available (pop-up); try again
@@ -11,4 +9,4 @@ submitWorld.precise = async () => {
 	});
 };
 
-module.exports = submitWorld;
+module.exports = common.submitWorld;

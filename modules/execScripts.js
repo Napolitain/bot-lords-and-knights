@@ -2,9 +2,9 @@ const common = require('./common');
 const fn = require('./fn');
 const autocorrect = require('./autocorrect');
 
-let execScripts = {};
+common.execScripts = {};
 
-execScripts.gatherData = async () => {
+common.execScripts.gatherData = async () => {
 	await common.page.waitFor('#menu-section-general-container > div > div.menu--content-section > div.menu-list-element.habitat-overview--widget.clickable');
 	await common.page.waitFor('.tabular-cell--upgrade-building');
 	await autocorrect.buttonRedAccept();
@@ -51,7 +51,7 @@ execScripts.gatherData = async () => {
 	});
 };
 
-execScripts.build = async () => {
+common.execScripts.build = async () => {
 	let algorithms = {};
 	for (const [key, value] of Object.entries(common.castles)) {
 		algorithms[key] = fn.getAlgorithm(value.points);
@@ -100,4 +100,4 @@ execScripts.build = async () => {
 	console.log("4 - execScripts.build completed");
 };
 
-module.exports = execScripts;
+module.exports = common.execScripts;
