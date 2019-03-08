@@ -11,9 +11,9 @@ common.config = JSON.parse(fs.readFileSync("config.json", "utf-8"));
  * - set viewPort, userAgent
  * - goto URL
  */
-common.init = () => {
-    common.browser = puppeteer.launch({headless: false});
-    common.page = common.browser.newPage();
+common.init = async () => {
+    common.browser = await puppeteer.launch({headless: false});
+    common.page = await common.browser.newPage();
 
     common.page.setViewport({width: 1920, height: 1080});
     common.page.setUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36");
@@ -28,7 +28,7 @@ common.init = () => {
         }
     });
 
-    common.page.goto('https://lordsandknights.com');
+    await common.page.goto('https://lordsandknights.com');
 };
 
 module.exports = common;
