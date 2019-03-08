@@ -1,4 +1,5 @@
-const common = require('./common');
+let common = require('./common');
+common.submitWorld = require('./submitWorld');
 
 common.login = {};
 
@@ -16,7 +17,7 @@ common.login.fill = async (email, password) => {
         document.querySelector("button").click();
         console.log("1 - login.fill()");
     }, email, password);
-
+    await common.submitWorld();
 };
 
 /**
@@ -35,7 +36,7 @@ common.login.directPlay = async () => {
             common.todo = "common.init";
         }
     });
-    common.todo = "submitWorlds.precise";
+    await common.submitWorld();
 };
 
 module.exports = common.login;

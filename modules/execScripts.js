@@ -1,6 +1,7 @@
-const common = require('./common');
-const fn = require('./fn');
-const autocorrect = require('./autocorrect');
+let common = require('./common');
+common.getTimes = require('./getTimes');
+let fn = require('./fn');
+let autocorrect = require('./autocorrect');
 
 common.execScripts = {};
 
@@ -49,6 +50,7 @@ common.execScripts.gatherData = async () => {
 		console.log('4 - execScripts.gatherData completed');
 		return data;
 	});
+	await common.execScripts.build();
 };
 
 common.execScripts.build = async () => {
@@ -98,6 +100,7 @@ common.execScripts.build = async () => {
 		}
 	}, common.castles, algorithms);
 	console.log("4 - execScripts.build completed");
+	await common.getTimes();
 };
 
 module.exports = common.execScripts;

@@ -20,4 +20,5 @@
 
 	await common.init();
 	await common.login.fill(email, password);
+	// await common.getTimes();
 })();

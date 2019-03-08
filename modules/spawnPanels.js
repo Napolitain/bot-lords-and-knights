@@ -1,4 +1,5 @@
-const common = require('./common');
+let common = require('./common');
+common.execScripts = require('./execScripts');
 //const autocorrect = require('./autocorrect');
 
 common.spawnPanels = async () => {
@@ -10,6 +11,7 @@ common.spawnPanels = async () => {
 		document.querySelector('#game-bar-top > div > div.bar-top--center-column > div > div.habitat-chooser--title-row > div').click();
 		console.log("3 - spawnPanels completed");
 	});
+	await common.execScripts.gatherData();
 };
 
 module.exports = common.spawnPanels;

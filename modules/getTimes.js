@@ -1,7 +1,8 @@
-const common = require('./common');
+let common = require('./common');
+common.login = require('./login');
 
 common.getTimes = async () => {
-	common.next = await common.page.evaluate(() => {
+	let next = await common.page.evaluate(() => {
 		/**
 		 * next in seconds
 		 * @type {number}
@@ -25,6 +26,7 @@ common.getTimes = async () => {
 		}
 		return next;
 	});
+	setTimeout(common.login.directPlay, next);
 };
 
 module.exports = common.getTimes;

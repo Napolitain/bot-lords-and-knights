@@ -1,4 +1,5 @@
-const common = require('./common');
+let common = require('./common');
+common.login = require('./login');
 
 common.autocorrect = {};
 
@@ -24,13 +25,15 @@ common.autocorrect.buttonRedAccept = async () => {
  */
 common.autocorrect.worldUnavailable = async () => {
 	await common.page.waitFor('.button.button--default', {timeout: 5000});
-	await common.page.evaluate(() => {
+	const isUnavailable = await common.page.evaluate(() => {
 		let event = document.querySelector("button button--default")
-		if (event != null) {
-			console.log()
-			common.init();
-		}
+		return event != null;
 	});
+	await common.login.directPlay();
+};
+
+common.autocorrect.tutorialButton = async () => {
+	// icon  icon-tutorial icon-close-button
 };
 
 module.exports = common.autocorrect;

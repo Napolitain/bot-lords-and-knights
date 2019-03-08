@@ -1,4 +1,5 @@
-const common = require('./common');
+let common = require('./common');
+common.spawnPanels = require('./spawnPanels');
 
 common.submitWorld = async () => {
 	await common.page.waitFor("#choose-world-scene div:nth-child(1)");
@@ -7,6 +8,7 @@ common.submitWorld = async () => {
 		document.querySelector('#choose-world-scene > div:nth-child(2) > div.choose-world-scene--buttons-list > div:nth-child(1)').click();
 		console.log("2 - submitWorld completed")
 	});
+	await common.spawnPanels();
 };
 
 module.exports = common.submitWorld;
