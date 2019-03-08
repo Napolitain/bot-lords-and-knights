@@ -1,7 +1,7 @@
 const common = require('./common');
 
-common.getTimes = async () => {
-	common.next = await common.page.evaluate(() => {
+common.getTimes = () => {
+	common.next = common.page.evaluate(() => {
 		/**
 		 * next in seconds
 		 * @type {number}

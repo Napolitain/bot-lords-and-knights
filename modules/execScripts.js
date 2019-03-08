@@ -4,11 +4,11 @@ const autocorrect = require('./autocorrect');
 
 common.execScripts = {};
 
-common.execScripts.gatherData = async () => {
-	await common.page.waitFor('#menu-section-general-container > div > div.menu--content-section > div.menu-list-element.habitat-overview--widget.clickable');
-	await common.page.waitFor('.tabular-cell--upgrade-building');
-	await autocorrect.buttonRedAccept();
-	common.castles = await common.page.evaluate(() => {
+common.execScripts.gatherData = () => {
+	common.page.waitFor('#menu-section-general-container > div > div.menu--content-section > div.menu-list-element.habitat-overview--widget.clickable');
+	common.page.waitFor('.tabular-cell--upgrade-building');
+	//autocorrect.buttonRedAccept();
+	common.castles = common.page.evaluate(() => {
 		let data = {};
 
 		// get castle resources
@@ -51,12 +51,12 @@ common.execScripts.gatherData = async () => {
 	});
 };
 
-common.execScripts.build = async () => {
+common.execScripts.build = () => {
 	let algorithms = {};
 	for (const [key, value] of Object.entries(common.castles)) {
 		algorithms[key] = fn.getAlgorithm(value.points);
 	}
-	await common.page.evaluate((json, algorithms) => {
+	common.page.evaluate((json, algorithms) => {
 		function add(a, b) {
 			return a + b;
 		}
