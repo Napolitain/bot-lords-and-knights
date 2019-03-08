@@ -2,13 +2,16 @@ const common = require('./common');
 
 let autocorrect = {};
 
-// accept any red button (quests)
+/**
+ * Accept an event with red accept button
+ * @returns {Promise<void>} ignored
+ */
 autocorrect.buttonRedAccept = async () => {
-	common.page.evaluate(() => {
+	await common.page.evaluate(() => {
 		let event = document.querySelector("div.event-pop-up-button.ButtonRedAccept");
 		if (event != null) {
 			event.click();
-			console.log("autocorrect.buttonRedAccept()");
+			console.log("autocorrect.buttonRedAccept closed an event pop-up");
 		}
 	});
 };

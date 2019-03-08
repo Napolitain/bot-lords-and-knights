@@ -8,7 +8,8 @@
 
 (async () => {
     const common = require('./modules/common');
-    const fillLogin = require('./modules/fillLogin');
+
+    const login = require('./modules/login');
     const submitWorlds = require('./modules/submitWorld');
     const spawnPanels = require('./modules/spawnPanels');
     const execScripts = require('./modules/execScripts');
@@ -17,14 +18,12 @@
     const email = process.argv[2];
     const password = process.argv[3];
 
-	var routine = async () => {
-		await common.init();
-		await fillLogin.precise(email, password);
-		await submitWorlds.precise();
-		await spawnPanels.precise();
-		await execScripts.gatherData();
-		await execScripts.build();
-		await getTimes.precise();
-		setTimeout(routine, common.next);
-	};
+	await common.init();
+	await login.fill(email, password);
+
+	// await submitWorlds.fill();
+	// await spawnPanels.fill();
+	// await execScripts.gatherData();
+	// await execScripts.build();
+	// await getTimes.fill();
 })();

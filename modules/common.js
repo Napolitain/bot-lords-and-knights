@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs');
 
-let common = {done: false};
+let common = {todo: "common.init"};
 
 common.config = JSON.parse(fs.readFileSync("config.json", "utf-8"));
 
@@ -22,8 +22,8 @@ common.init = async () => {
         }
     });
 
-    // no networkidle2 because the website can be slow (useless with waitFor)
     await common.page.goto('https://lordsandknights.com');
+    common.todo = "login.fill";
 };
 
 module.exports = common;
