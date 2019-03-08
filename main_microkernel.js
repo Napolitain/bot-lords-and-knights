@@ -7,7 +7,7 @@
  */
 
 (async () => {
-    let common = require('./modules/common');
+	let common = require('./modules/common');
 
 	common.login = require('./modules/login');
     common.submitWorld = require('./modules/submitWorld');
@@ -16,7 +16,7 @@
 	common.getTimes = require('./modules/getTimes');
 
 	const email = process.argv[2];
-    const password = process.argv[3];
+	const password = process.argv[3];
 
 	await common.init();
 	await common.login.fill(email, password);
