@@ -15,7 +15,7 @@
     common.execScripts = require('./modules/execScripts');
 	common.getTimes = require('./modules/getTimes');
 
-    const email = process.argv[2];
+	const email = process.argv[2];
     const password = process.argv[3];
 
 	await common.init();
