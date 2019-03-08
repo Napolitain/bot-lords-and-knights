@@ -17,11 +17,14 @@
     const email = process.argv[2];
     const password = process.argv[3];
 
-    await common.init();
-    await fillLogin.precise(email, password);
-	await submitWorlds.precise();
-	await spawnPanels.precise();
-	await execScripts.gatherData();
-	await execScripts.build();
-	await getTimes.precise();
+	var routine = async () => {
+		await common.init();
+		await fillLogin.precise(email, password);
+		await submitWorlds.precise();
+		await spawnPanels.precise();
+		await execScripts.gatherData();
+		await execScripts.build();
+		await getTimes.precise();
+		setTimeout(routine, common.next);
+	};
 })();

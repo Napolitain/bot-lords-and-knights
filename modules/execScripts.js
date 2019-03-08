@@ -46,7 +46,7 @@ execScripts.gatherData = async () => {
 			data[name].buildings.oremine = buildings[11].querySelector('div').innerHTML;
 			data[name].buildings.orestore = buildings[12].querySelector('div').innerHTML;
 		}
-		console.log('4 - execScripts.gatherData() completed');
+		console.log('4 - execScripts.gatherData completed');
 		return data;
 	});
 };
@@ -97,6 +97,7 @@ execScripts.build = async () => {
 			}
 		}
 	}, common.castles, algorithms);
+	console.log("4 - execScripts.build completed");
 };
 
 module.exports = execScripts;
