@@ -15,6 +15,7 @@ login.fill = async (email, password) => {
         document.querySelector("[name='login-password']").value = password;
         document.querySelector("button").click();
         console.log("1 - login.fill()");
+        common.todo = "submitWorlds.precise";
     }, email, password);
 };
 
@@ -30,8 +31,11 @@ login.directPlay = async () => {
         if (event != null) {
             event.click();
             console.log("1 - login.directPlay()");
+        } else {
+            common.todo = "common.init";
         }
     });
+    common.todo = "submitWorlds.precise";
 };
 
 module.exports = login;
