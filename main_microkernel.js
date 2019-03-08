@@ -9,7 +9,7 @@
 (async () => {
     const common = require('./modules/common');
 
-    const login = require('./modules/login');
+	const login = require('./modules/login');
     const submitWorlds = require('./modules/submitWorld');
     const spawnPanels = require('./modules/spawnPanels');
     const execScripts = require('./modules/execScripts');
@@ -20,10 +20,4 @@
 
 	await common.init();
 	await login.fill(email, password);
-
-	// await submitWorlds.fill();
-	// await spawnPanels.fill();
-	// await execScripts.gatherData();
-	// await execScripts.build();
-	// await getTimes.fill();
 })();

@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs');
 
-let common = {todo: "common.init"};
+let common = {};
 
 common.config = JSON.parse(fs.readFileSync("config.json", "utf-8"));
 
@@ -23,7 +23,6 @@ common.init = async () => {
     });
 
     await common.page.goto('https://lordsandknights.com');
-    common.todo = "login.fill";
 };
 
 module.exports = common;

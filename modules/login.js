@@ -15,8 +15,8 @@ login.fill = async (email, password) => {
         document.querySelector("[name='login-password']").value = password;
         document.querySelector("button").click();
         console.log("1 - login.fill()");
-        common.todo = "submitWorlds.precise";
     }, email, password);
+
 };
 
 /**
@@ -25,7 +25,7 @@ login.fill = async (email, password) => {
  */
 login.directPlay = async () => {
     await common.page.reload();
-    await common.page.waitFor('button.button.button-direct-play', {timeout: 6000});
+    await common.page.waitFor('button.button.button-direct-play');
     await common.page.evaluate(() => {
         let event = document.querySelector('button.button.button-direct-play');
         if (event != null) {
