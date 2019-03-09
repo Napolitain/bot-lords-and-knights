@@ -2,8 +2,21 @@
   "blacklist_hours":[],
   "buildings":{
     "active":true,
-    "caps":[190, 220, 289],
+    "caps":[60, 190, 220, 289],
     "parts":[
+      {
+        "cap":60,
+        "rate_on":120,
+        "dun_rate":0,
+        "lib_rate":0,
+        "tav_rate":0,
+        "army_rate":0,
+        "fort_rate":0,
+        "market_rate":0,
+        "farms_rate":10,
+        "ress_rate":120,
+        "fill":false
+      },
       {
         "cap":190,
         "rate_on":120,

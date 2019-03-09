@@ -31,4 +31,9 @@ common.init = async () => {
     await common.page.goto('https://lordsandknights.com');
 };
 
+common.resume = async (next) => {
+    // TODO: disable JS, reload, wait, enable JS and reload
+    setTimeout(common.login.directPlay, next);
+};
+
 module.exports = common;

@@ -1,5 +1,4 @@
 let common = require('./common');
-common.login = require('./login');
 
 common.getTimes = async () => {
 	let next = await common.page.evaluate(() => {
@@ -10,9 +9,9 @@ common.getTimes = async () => {
 		let next = Infinity;
 		let times = document.querySelectorAll('.complete');
 		for (const time of times) {
-			if (time.innerHTML.indexOf('<')) {
+			if (time.innerHTML.indexOf('<') !== -1) {
 				next = 60; // next is in less than a minute
-			} else if (time.innerHTML.indexOf('h')) {
+			} else if (time.innerHTML.indexOf('h') !== -1) {
 				let s = parseInt(time.innerHTML.split(' ')[0]) * 3600;
 				if (next > s) {
 					next = s;
@@ -26,7 +25,7 @@ common.getTimes = async () => {
 		}
 		return next;
 	});
-	setTimeout(common.login.directPlay, next);
+	common.resume(next);
 };
 
 module.exports = common.getTimes;
