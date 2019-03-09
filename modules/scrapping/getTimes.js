@@ -24,7 +24,7 @@ common.getTimes = async () => {
 				}
 			}
 		}
-		return next;
+		return next === Infinity ? 300 : next; // if infinity, it means it couldn't build, so wait for the ressources
 	});
 	console.log("5 - common.getTimes() => " + next.toString());
 	common.resume(next);
