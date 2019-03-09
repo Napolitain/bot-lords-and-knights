@@ -1,0 +1,1 @@
+// TODO: make a class which uses page.keyboard.sendCharacter and page.click with human like delays to bypass BOT detectors (may work for reCAPTCHA?)

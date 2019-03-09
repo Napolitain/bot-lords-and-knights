@@ -24,12 +24,11 @@ common.autocorrect.buttonRedAccept = async () => {
  * @returns {Promise<void>}
  */
 common.autocorrect.worldUnavailable = async () => {
-	await common.page.waitFor('.button.button--default', {timeout: 5000});
-	const isUnavailable = await common.page.evaluate(() => {
-		let event = document.querySelector("button button--default")
-		return event != null;
-	});
-	await common.login.directPlay();
+	try {
+		await common.page.waitFor('.button.button--default', {timeout: 5000});
+		console.log("common.autocorrect.worldUnavailable(): starting common.login.directPlay");
+		await common.login.directPlay();
+	} catch (e) {}
 };
 
 common.autocorrect.tutorialButton = async () => {

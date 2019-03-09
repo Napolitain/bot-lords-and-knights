@@ -28,12 +28,12 @@ common.init = async () => {
         }
     });
 
-    await common.page.goto('https://lordsandknights.com');
+    await common.page.goto('https://lordsandknights.com', {slowMo: 200});
 };
 
 common.resume = async (next) => {
     // TODO: disable JS, reload, wait, enable JS and reload
-    setTimeout(common.login.directPlay, next);
+    setTimeout(common.login.directPlay, next * 1000);
 };
 
 module.exports = common;

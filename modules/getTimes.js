@@ -1,6 +1,7 @@
 let common = require('./common');
 
 common.getTimes = async () => {
+	await common.page.waitFor('.complete');
 	let next = await common.page.evaluate(() => {
 		/**
 		 * next in seconds
@@ -25,6 +26,7 @@ common.getTimes = async () => {
 		}
 		return next;
 	});
+	console.log("5 - common.getTimes() => " + next.toString());
 	common.resume(next);
 };
 
