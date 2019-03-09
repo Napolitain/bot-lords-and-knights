@@ -1,6 +1,6 @@
 let common = require('../common');
 common.getTimes = require('./getTimes');
-let fn = require('../fn');
+let fn = require('../data/fn');
 let autocorrect = require('./autocorrect');
 
 common.execScripts = {};
