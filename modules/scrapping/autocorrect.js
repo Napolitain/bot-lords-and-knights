@@ -26,13 +26,14 @@ common.autocorrect.buttonRedAccept = async () => {
 common.autocorrect.worldUnavailable = async () => {
 	try {
 		await common.page.waitFor('.button.button--default', {timeout: 5000});
-		console.log("common.autocorrect.worldUnavailable(): starting common.login.directPlay");
 		if (common.retry !== 3) {
+			console.log("common.autocorrect.worldUnavailable(): starting common.login.directPlay");
 			common.retry++;
 			await common.login.directPlay();
 		} else {
+			console.log("common.autocorrect.worldUnavailable(): common.login.directPlay couldn't solve the issue. Restarting in 5 minutes.");
 			common.retry = 0;
-			setTimeout(common.init, 3000000); // restart the BOT in 5 minutes if the world is really not available
+			setTimeout(common.restart, 3000000); // restart the BOT in 5 minutes if the world is really not available
 		}
 	} catch (e) {}
 };

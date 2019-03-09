@@ -31,6 +31,11 @@ common.init = async () => {
     await common.page.goto('https://lordsandknights.com');
 };
 
+common.restart = async () => {
+    await common.browser.close();
+    await common.init();
+};
+
 common.resume = async (next) => {
     // TODO: disable JS, reload, wait, enable JS and reload
     common.page.reload();
