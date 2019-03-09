@@ -1,4 +1,4 @@
-let common = require('./common');
+let common = require('../common');
 common.login = require('./login');
 
 common.autocorrect = {};

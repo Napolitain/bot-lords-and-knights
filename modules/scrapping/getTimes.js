@@ -1,4 +1,4 @@
-let common = require('./common');
+let common = require('../common');
 
 common.getTimes = async () => {
 	await common.page.waitFor('.complete');

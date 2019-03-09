@@ -1,4 +1,4 @@
-let common = require('./common');
+let common = require('../common');
 common.spawnPanels = require('./spawnPanels');
 
 common.submitWorld = async () => {

@@ -9,11 +9,11 @@
 (async () => {
 	let common = require('./modules/common');
 
-	common.login = require('./modules/login');
-	common.submitWorlds = require('./modules/submitWorld');
-	common.spawnPanels = require('./modules/spawnPanels');
-	common.execScripts = require('./modules/execScripts');
-	common.getTimes = require('./modules/getTimes');
+	common.login = require('./modules/scrapping/login');
+	common.submitWorlds = require('./modules/scrapping/submitWorld');
+	common.spawnPanels = require('./modules/scrapping/spawnPanels');
+	common.execScripts = require('./modules/scrapping/execScripts');
+	common.getTimes = require('./modules/scrapping/getTimes');
 
 	const email = process.argv[2];
 	const password = process.argv[3];

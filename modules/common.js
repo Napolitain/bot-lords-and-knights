@@ -33,6 +33,7 @@ common.init = async () => {
 
 common.resume = async (next) => {
     // TODO: disable JS, reload, wait, enable JS and reload
+    await common.page.reload();
     setTimeout(common.login.directPlay, next * 1000);
 };
 

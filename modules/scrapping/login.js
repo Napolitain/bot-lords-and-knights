@@ -1,4 +1,4 @@
-let common = require('./common');
+let common = require('../common');
 common.submitWorld = require('./submitWorld');
 
 common.login = {};

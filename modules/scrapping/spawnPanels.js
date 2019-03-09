@@ -1,4 +1,4 @@
-let common = require('./common');
+let common = require('../common');
 common.execScripts = require('./execScripts');
 common.autocorrect = require('./autocorrect');
 
