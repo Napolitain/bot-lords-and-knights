@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs');
 
-let common = {};
+let common = {retry: 0};
 
 common.config = JSON.parse(fs.readFileSync("config.json", "utf-8"));
 
