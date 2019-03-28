@@ -30,7 +30,7 @@ common.io.type = async (selector, text) => {
 common.io.click = async (selector) => {
 	// TODO: use gaussian function instead of linear random numbers
 	// TODO: moving the cursor to simulate a human.
-	common.page.click(selector, {delay: Math.random() * 120 + 60}); // probability of mousedown-mouseup interval
+	await common.page.click(selector, {delay: Math.random() * 120 + 60}); // probability of mousedown-mouseup interval
 };
 
 module.exports = common.io;
