@@ -13,7 +13,6 @@
         "army_rate":0,
         "fort_rate":0,
         "market_rate":0,
-        "farms_rate":10,
         "ress_rate":120,
         "fill":false
       },
@@ -26,7 +25,6 @@
         "army_rate":8,
         "fort_rate":16,
         "market_rate":16,
-        "farms_rate":30,
         "ress_rate":120,
         "fill":false
       },
@@ -39,7 +37,6 @@
         "army_rate":45,
         "fort_rate":60,
         "market_rate":85,
-        "farms_rate":60,
         "ress_rate":85,
         "fill":false
       },
