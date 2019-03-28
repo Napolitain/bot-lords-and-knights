@@ -1,5 +1,3 @@
-// TODO: make a class which uses page.keyboard.sendCharacter and page.click with human like delays to bypass BOT detectors (may work for reCAPTCHA?)
-
 let common = require('../common');
 common.io = {};
 
@@ -16,6 +14,7 @@ common.io.setTimeout = require('util').promisify(setTimeout);
  * @returns {Promise<void>}
  */
 common.io.type = async (selector, text) => {
+	// TODO: use gaussian function instead of linear random numbers
 	await common.page.focus(selector);
 	for (const char of text) {
 		await common.io.setTimeout(Math.random() * 140 + 110); // probability of IKI (inter-key interval) being between 110 and 250ms is very high
@@ -29,8 +28,9 @@ common.io.type = async (selector, text) => {
  * @returns {Promise<void>}
  */
 common.io.click = async (selector) => {
+	// TODO: use gaussian function instead of linear random numbers
 	// TODO: moving the cursor to simulate a human.
-	common.page.click(selector);
+	common.page.click(selector, {delay: Math.random() * 120 + 60}); // probability of mousedown-mouseup interval
 };
 
 module.exports = common.io;
