@@ -9,6 +9,8 @@
 (async () => {
 	let common = require('./modules/common');
 
+	common.io = require('./modules/augmented/io');
+
 	common.login = require('./modules/scrapping/login');
 	common.submitWorlds = require('./modules/scrapping/submitWorld');
 	common.spawnPanels = require('./modules/scrapping/spawnPanels');
