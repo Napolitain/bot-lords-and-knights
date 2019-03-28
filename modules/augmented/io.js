@@ -9,8 +9,8 @@ common.io.setTimeout = require('util').promisify(setTimeout);
 
 /**
  * Focus element and send characters using pseudo random algorithm : random intervals between keypresses with statistics in mind.
- * @param selector The selector to focus the element.
- * @param text The text to be sent.
+ * @param {selector<string>} A selector to search for element to click. If there are multiple elements satisfying the selector, the first will be clicked.
+ * @param {text<string>} A text to type into a focused element.
  * @returns {Promise<void>}
  */
 common.io.type = async (selector, text) => {
@@ -18,13 +18,13 @@ common.io.type = async (selector, text) => {
 	await common.page.focus(selector);
 	for (const char of text) {
 		await common.io.setTimeout(Math.random() * 140 + 110); // probability of IKI (inter-key interval) being between 110 and 250ms is very high
-		await common.page.keyboard.sendCharacter(char);
+		await common.page.type(char, {delay: Math.random() * 40 + 80}); // probability of keypress duration
 	}
 };
 
 /**
  * Move the cursor at a randomly changing speed to the selector, and click.
- * @param selector The selector to focus the element.
+ * @param {selector<string>} A selector to search for element to click. If there are multiple elements satisfying the selector, the first will be clicked.
  * @returns {Promise<void>}
  */
 common.io.click = async (selector) => {
