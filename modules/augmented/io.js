@@ -3,6 +3,10 @@
 let common = require('../common');
 common.io = {};
 
+/**
+ * Promisified version of setTimeout, so it works with await.
+ * @type {promisified}
+ */
 common.io.setTimeout = require('util').promisify(setTimeout);
 
 /**
@@ -14,9 +18,8 @@ common.io.setTimeout = require('util').promisify(setTimeout);
 common.io.type = async (selector, text) => {
 	await common.page.focus(selector);
 	for (const char of text) {
-		console.log(char);
-		await common.page.keyboard.sendCharacter(char);
 		await common.io.setTimeout(Math.random() * 140 + 110); // probability of IKI (inter-key interval) being between 110 and 250ms is very high
+		await common.page.keyboard.sendCharacter(char);
 	}
 };
 

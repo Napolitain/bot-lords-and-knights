@@ -14,12 +14,7 @@ common.login.fill = async (email, password) => {
     await common.io.type("[name='login-name']", email);
     await common.io.type("[name='login-password']", password);
     await common.io.click("button");
-    // await common.page.evaluate((email, password) => {
-    //     document.querySelector("[name='login-name']").value = email;
-    //     document.querySelector("[name='login-password']").value = password;
-    //     document.querySelector("button").click();
-    //     console.log("1 - login.fill()");
-    // }, email, password);
+    console.log("1 - login.fill()");
     await common.submitWorld();
 };
 
